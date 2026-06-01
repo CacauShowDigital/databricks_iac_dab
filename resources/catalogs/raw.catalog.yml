@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../.databricks-bundle-schema.json
+resources:
+  catalogs:
+    raw_catalog:
+      name: "${var.raw_catalog}"
+      comment: "Catálogo com dados da origem sem transformações para o ambiente de
+        desenvolvimento."
+      storage_root: "${var.default_storage_root}"
+      grants: ${var.raw_uc_grants}

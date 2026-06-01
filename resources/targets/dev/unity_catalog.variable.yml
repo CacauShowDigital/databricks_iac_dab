@@ -3,12 +3,12 @@ targets:
     variables:
       catalog: az_databricks_bigdata_dev
       schema: ${workspace.current_user.short_name}
-      raw_catalog: dab_${var.environment}_raw
-      svo_catalog: dab_${var.environment}_svo
-      brz_catalog: dab_${var.environment}_brz
-      slv_catalog: dab_${var.environment}_slv
-      gld_catalog: dab_${var.environment}_gld
-      bic_catalog: dab_${var.environment}_bic
-      governance_catalog: ${var.environment}_governance
+      raw_catalog: test_dab_${var.environment}_raw
+      svo_catalog: test_dab_${var.environment}_svo
+      brz_catalog: test_dab_${var.environment}_brz
+      slv_catalog: test_dab_${var.environment}_slv
+      gld_catalog: test_dab_${var.environment}_gld
+      bic_catalog: test_dab_${var.environment}_bic
+      ext_catalog: test_dab_${var.environment}_ext
       default_storage_root: "abfss://unity-catalog-storage@dbstoragez3ckciou7sptu.dfs\
         .core.windows.net/1218127359024308/" # TODO: use lookup insted of hardcoding the storage root

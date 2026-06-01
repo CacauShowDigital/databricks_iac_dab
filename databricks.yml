@@ -19,13 +19,12 @@ permissions:
   - group_name: ${var.group_qualidade_de_dados}
     level: CAN_VIEW
   - group_name: ${var.group_brq}
-    level: CAN_MANAGE
+    level: CAN_VIEW
   - group_name: ${var.group_admin_engenheiros_de_dados}
+    level: CAN_VIEW
+  - service_principal_name: ${var.deploy_service_principal_id}
     level: CAN_MANAGE
-# Variable declarations. These variables are assigned in the dev/prod targets below.
-variables:
-  environment:
-    description: The environment to deploy to
+
 
 targets:
   dev:
@@ -34,8 +33,6 @@ targets:
     workspace:
       host: https://adb-1218127359024308.8.azuredatabricks.net
       root_path: /Workspace/${bundle.target}/bundles/${bundle.name}
-    variables:
-      environment: ${bundle.target}
     permissions:
       - group_name: ${var.group_engenheiros_de_dados}
         level: CAN_MANAGE
@@ -47,3 +44,21 @@ targets:
         level: CAN_MANAGE
       - service_principal_name: ${var.deploy_service_principal_id}
         level: CAN_MANAGE
+  ci_quality:
+    mode: production
+    default: true
+    workspace:
+      host: https://adb-1218127359024308.8.azuredatabricks.net
+      root_path: /Workspace/${bundle.target}/bundles/${bundle.name}
+    permissions:
+      - group_name: ${var.group_engenheiros_de_dados}
+        level: CAN_MANAGE
+      - group_name: ${var.group_cientistas_de_dados}
+        level: CAN_MANAGE
+      - group_name: ${var.group_admin_engenheiros_de_dados}
+        level: CAN_MANAGE
+      - group_name: ${var.group_brq}
+        level: CAN_MANAGE
+      - service_principal_name: ${var.deploy_service_principal_id}
+        level: CAN_MANAGE
+        

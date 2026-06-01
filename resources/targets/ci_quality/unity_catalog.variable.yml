@@ -1,0 +1,14 @@
+targets:
+  ci_quality:
+    variables:
+      catalog: az_databricks_bigdata_dev
+      schema: default
+      raw_catalog: ${var.environment}_raw
+      svo_catalog: ${var.environment}_svo
+      brz_catalog: ${var.environment}_brz
+      slv_catalog: ${var.environment}_slv
+      gld_catalog: ${var.environment}_gld
+      bic_catalog: ${var.environment}_bic
+      ext_catalog: ${var.environment}_ext
+      default_storage_root: "abfss://unity-catalog-storage@dbstoragez3ckciou7sptu.dfs\
+        .core.windows.net/1218127359024308/" # TODO: use lookup insted of hardcoding the storage root

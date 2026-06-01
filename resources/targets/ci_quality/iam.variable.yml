@@ -1,15 +1,14 @@
 targets:
-  dev:
+  ci_quality:
     variables:
       environment: ${bundle.target}
       # Service principals
       deploy_service_principal_id:
         lookup:
-          service_principal: "BIGDATA_DEV_CICD_SP"
-
+          service_principal: "BIGDATA_CI_QUALITY_CICD"
       run_as_service_principal_id:
-        default: null
-  
+        lookup:
+          service_principal: "BIGDATA_CI_QUALITY_JOBS_SP"
       # Groups
       group_engenheiros_de_dados:
         description: The name of the Engenheiros de Dados group in Databricks
@@ -54,6 +53,19 @@ targets:
           - principal: "${var.group_analistas_de_dados}"
             privileges:
               - BROWSE
+          - principal: "${var.run_as_service_principal_id}"
+            privileges:
+              - BROWSE
+              - USE_CATALOG
+              - USE_SCHEMA
+              - SELECT
+              - EXECUTE
+              - READ_VOLUME
+              - MODIFY
+              - REFRESH
+              - WRITE_VOLUME
+              - CREATE_TABLE
+              - CREATE_SCHEMA
 
       brz_uc_grants:
         description: The grants to apply to brz catalog
@@ -74,7 +86,19 @@ targets:
           - principal: "${var.group_analistas_de_dados}"
             privileges:
               - BROWSE
-
+          - principal: "${var.run_as_service_principal_id}"
+            privileges:
+              - BROWSE
+              - USE_CATALOG
+              - USE_SCHEMA
+              - SELECT
+              - EXECUTE
+              - READ_VOLUME
+              - MODIFY
+              - REFRESH
+              - WRITE_VOLUME
+              - CREATE_TABLE
+              - CREATE_SCHEMA
       svo_uc_grants:
         description: The grants to apply to svo catalog
         type: complex
@@ -97,9 +121,22 @@ targets:
               - USE_CATALOG
               - USE_SCHEMA
               - SELECT
+          - principal: "${var.run_as_service_principal_id}"
+            privileges:
+              - BROWSE
+              - USE_CATALOG
+              - USE_SCHEMA
+              - SELECT
+              - EXECUTE
+              - READ_VOLUME
+              - MODIFY
+              - REFRESH
+              - WRITE_VOLUME
+              - CREATE_TABLE
+              - CREATE_SCHEMA
 
       slv_uc_grants:
-        description: The grants to apply to svl catalog
+        description: The grants to apply to slv catalog
         type: complex
         default:
           - principal: "${var.group_engenheiros_de_dados}"
@@ -118,7 +155,19 @@ targets:
             privileges:
               - MANAGE
               - ALL_PRIVILEGES
-  
+          - principal: "${var.run_as_service_principal_id}"
+            privileges:
+              - BROWSE
+              - USE_CATALOG
+              - USE_SCHEMA
+              - SELECT
+              - EXECUTE
+              - READ_VOLUME
+              - MODIFY
+              - REFRESH
+              - WRITE_VOLUME
+              - CREATE_TABLE
+              - CREATE_SCHEMA
       gld_uc_grants:
         description: The grants to apply to gld catalog
         type: complex
@@ -139,6 +188,19 @@ targets:
             privileges:
               - MANAGE
               - ALL_PRIVILEGES
+          - principal: "${var.run_as_service_principal_id}"
+            privileges:
+              - BROWSE
+              - USE_CATALOG
+              - USE_SCHEMA
+              - SELECT
+              - EXECUTE
+              - READ_VOLUME
+              - MODIFY
+              - REFRESH
+              - WRITE_VOLUME
+              - CREATE_TABLE
+              - CREATE_SCHEMA
       bic_uc_grants:
         description: The grants to apply to bic catalog
         type: complex
@@ -158,7 +220,19 @@ targets:
           - principal: "${var.group_analistas_de_dados}"
             privileges:
               - BROWSE
-
+          - principal: "${var.run_as_service_principal_id}"
+            privileges:
+              - BROWSE
+              - USE_CATALOG
+              - USE_SCHEMA
+              - SELECT
+              - EXECUTE
+              - READ_VOLUME
+              - MODIFY
+              - REFRESH
+              - WRITE_VOLUME
+              - CREATE_TABLE
+              - CREATE_SCHEMA
       ext_uc_grants:
         description: The grants to apply to ext catalog
         type: complex
@@ -178,6 +252,19 @@ targets:
           - principal: "${var.group_analistas_de_dados}"
             privileges:
               - BROWSE
+          - principal: "${var.run_as_service_principal_id}"
+            privileges:
+              - BROWSE
+              - USE_CATALOG
+              - USE_SCHEMA
+              - SELECT
+              - EXECUTE
+              - READ_VOLUME
+              - MODIFY
+              - REFRESH
+              - WRITE_VOLUME
+              - CREATE_TABLE
+              - CREATE_SCHEMA
           
         
 

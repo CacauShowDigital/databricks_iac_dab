@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=../../.databricks-bundle-schema.json
 resources:
   catalogs:
-    brz_catalog:
-      name: "${var.brz_catalog}"
+    bic_catalog:
+      name: "${var.bic_catalog}"
       comment: "Catálogo com dados da origem sem transformações para o ambiente de
         desenvolvimento."
       storage_root: "${var.default_storage_root}"
-      grants: ${var.brz_uc_grants}
+      grants: ${var.bic_uc_grants}
